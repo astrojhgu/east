@@ -8,7 +8,7 @@ using namespace east;
 int main(int argc,char* argv[])
 {
   parser ps;
-  if(argc>=2)
+  if( argc>=2)
     {
       for(int i=1;i<argc;++i)
 	{
