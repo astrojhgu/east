@@ -12,7 +12,7 @@ int main(int argc,char* argv[])
     {
       for(int i=1;i<argc;++i)
 	{
-	  cout<<ps.parse(argv[i])<<endl;
+	  cout<<(*ps.parse(argv[i]))<<endl;
 	}
     }
   else
@@ -20,7 +20,7 @@ int main(int argc,char* argv[])
       string line;
       while(cin>>line)
 	{
-	  cout<<ps.parse(line)<<endl;
+	  cout<<(*ps.parse(line))<<endl;
 	}
     }
 }

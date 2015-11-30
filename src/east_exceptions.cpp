@@ -17,4 +17,8 @@ namespace east
   not_matched::not_matched()
     :std::logic_error("not matched")
   {}
+
+  unknown_node::unknown_node(const char* symbol)
+    :std::logic_error(symbol)
+  {}
 };

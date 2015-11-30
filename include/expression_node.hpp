@@ -22,6 +22,12 @@ namespace east
     int get_num_of_parents()const;    
     const expression_node& get_parent(int n)const;
     const std::string& get_symbol()const;
+    std::string get_kind()const;
+
+  public:
+    bool operator<(const expression_node& rhs)const;
+    int get_nparents()const;
+
   public:
     friend class parser;
   };

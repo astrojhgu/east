@@ -24,8 +24,8 @@ namespace east
     const token& next()const;
     void consume();
     void expect(const token& tok);
-    const expression_node& parse(std::string input);
-    const expression_node& Eparse();
+    std::shared_ptr<expression_node> parse(std::string input);
+    std::shared_ptr<expression_node> Eparse();
     void E();
     void P();
     void Q();

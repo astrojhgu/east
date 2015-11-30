@@ -38,7 +38,7 @@ namespace east
       }
   }
 
-  const expression_node& parser::parse(std::string input)
+  std::shared_ptr<expression_node> parser::parse(std::string input)
   {
     tokens=tkn.tokenize(input);
     token_index=-1;
@@ -48,12 +48,12 @@ namespace east
     return Eparse();
   }
   
-  const expression_node& parser::Eparse()
+  std::shared_ptr<expression_node> parser::Eparse()
   {
     operator_stack.push(operator_info::SENTINEL);
     E();
     expect(token::END);
-    return *(operand_stack.top());
+    return operand_stack.top();
   }
   
   void parser::E()

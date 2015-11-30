@@ -32,6 +32,13 @@ namespace east
     not_matched();
   };
 
+  class unknown_node
+    :public std::logic_error
+  {
+  public:
+    unknown_node(const char* symbol);
+  };
+
 }
 
 #endif
