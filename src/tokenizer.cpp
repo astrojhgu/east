@@ -213,7 +213,8 @@ namespace east
 		    if(result.empty()||
 		       result.back().type==token_type::LBRAKET||
 		       result.back().is_operator()||
-		       result.back().is_function())
+		       result.back().is_function()||
+		       result.back().is_comma())
 		      {
 			tk.type=token_type::UNARY;
 		      }
@@ -232,7 +233,7 @@ namespace east
 		  }
 		//std::cout<<(tk.type==token_type::NUMBER)<<" "<<tk.is_number()<<std::endl;
 		result.push_back(tk);
-		input=trim(std::regex_replace(input,t.pattern,""));
+		input=trim(std::regex_replace(input,t.pattern,std::string("")));
 		break;
 	      }
 	    

@@ -2,8 +2,8 @@ libs=lib/libeast.a
 tests=bin/test
 targets=$(libs) $(tests)
 objs=obj/expression_node.o obj/operator_info.o obj/parser.o obj/tokenizer.o obj/east_exceptions.o
-
-CXXFLAGS=-std=c++11 -I include/ -g
+CXX=clang++
+CXXFLAGS=-std=c++11 -I include/ -g -fPIC
 LDFLAGS=-L lib/ -least
 
 all:$(targets)
