@@ -47,7 +47,62 @@ namespace east
 
   std::string expression_node::get_kind()const
   {
-    if(symbol=="+")
+    if(symbol=="==")
+      {
+	if(parents.size()==2)
+	  {
+	    return "eq";
+	  }
+	else
+	  {
+	    throw unknown_node(symbol.c_str());
+	  }
+      }
+    else if(symbol=="<")
+      {
+	if(parents.size()==2)
+	  {
+	    return "lt";
+	  }
+	else
+	  {
+	    throw unknown_node(symbol.c_str());
+	  }
+      }
+    else if(symbol=="<=")
+      {
+	if(parents.size()==2)
+	  {
+	    return "le";
+	  }
+	else
+	  {
+	    throw unknown_node(symbol.c_str());
+	  }
+      }
+    else if(symbol==">")
+      {
+	if(parents.size()==2)
+	  {
+	    return "gt";
+	  }
+	else
+	  {
+	    throw unknown_node(symbol.c_str());
+	  }
+      }
+    else if(symbol==">=")
+      {
+	if(parents.size()==2)
+	  {
+	    return "ge";
+	  }
+	else
+	  {
+	    throw unknown_node(symbol.c_str());
+	  }
+      }
+    else if(symbol=="+")
       {
 	if(parents.size()==2)
 	  {

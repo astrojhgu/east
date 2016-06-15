@@ -113,26 +113,34 @@ namespace east
       {
 	throw not_operator(symbol.c_str());
       }
-    if(symbol=="+"||
+    if(symbol==">"||
+       symbol=="<"||
+       symbol=="<="||
+       symbol==">="||
+       symbol=="==")
+      {
+	return operator_info(symbol,operator_type::BINARY,operator_associativity::LEFT,2);
+      }
+    else if(symbol=="+"||
        symbol=="-")
       {
 	if(is_unary())
 	  {
-	    return operator_info(symbol,operator_type::UNARY,operator_associativity::NONE,3);
+	    return operator_info(symbol,operator_type::UNARY,operator_associativity::NONE,4);
 	  }
 	else
 	  {
-	    return operator_info(symbol,operator_type::BINARY,operator_associativity::LEFT,2);
+	    return operator_info(symbol,operator_type::BINARY,operator_associativity::LEFT,3);
 	  }
       }
     else if(symbol=="*"||
 	    symbol=="/")
       {
-	return operator_info(symbol,operator_type::BINARY,operator_associativity::LEFT,4);
+	return operator_info(symbol,operator_type::BINARY,operator_associativity::LEFT,5);
       }
     else if(symbol=="^")
       {
-	return operator_info(symbol,operator_type::BINARY,operator_associativity::RIGHT,5);
+	return operator_info(symbol,operator_type::BINARY,operator_associativity::RIGHT,6);
       }
     else if(is_function())
       {
@@ -167,6 +175,7 @@ namespace east
     add_pattern("[a-zA-Z][a-zA-Z0-9_]*\\s*\\(",token_type::FUNCTION); // function
     add_pattern("\\(",token_type::LBRAKET); // open bracket
     add_pattern("\\)",token_type::RBRAKET); // close bracket
+    add_pattern("[><=][=]*",token_type::OPERATOR);//< > <= >=
     add_pattern("[+-]",token_type::OPERATOR); // plus or minus
     add_pattern("[*/]",token_type::OPERATOR); // mult or divide
     add_pattern("\\^",token_type::OPERATOR); // raised
